@@ -1,0 +1,15 @@
+{
+  "name": "oauth2-token-grant",
+  "version": "0.0.1",
+  "description": "OAuth2 Token Grant Module",
+  "main": "index.js",
+  "scripts": {
+  },
+  "keywords": [
+    "OAUTH2",
+    "token",
+    "grant"
+  ],
+  "author": "Wen Chang",
+  "license": "MIT"
+}
