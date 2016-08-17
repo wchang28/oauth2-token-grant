@@ -1,3 +1,24 @@
+
+export class TokenGrant {
+	constructor() {}
+		getAccessTokenFromAuthCode = function(code:string, done: (err:any, access: any) => void) {
+			var data = {
+				grant_type: 'authorization_code'
+				,code: code
+				,client_id: client_id
+				,client_secret: client_secret
+				,redirect_uri: redirect_uri
+			};
+			jQuery.post(tokenGrantUrl, data)
+			.done(function(data) {
+				var access = JSON.parse(data);
+				if (typeof done === 'function') done(null, access);
+			}).fail(function(err) {
+				if (typeof done === 'function') done(err, null);
+			});		
+		};	
+}
+/*
 (function(global, factory) {
 	module.exports = factory();
 })(this, function() {
@@ -52,3 +73,4 @@
 	}
 	return OAuth2TokenGrant;
 });
+*/
