@@ -1,6 +1,6 @@
 {
   "name": "oauth2-token-grant",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "OAuth2 Token Grant Module",
   "main": "./js/index.js",
   "typings": "./js/index.d.ts",

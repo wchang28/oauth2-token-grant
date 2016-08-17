@@ -39,7 +39,8 @@ var TokenGrant = (function () {
     TokenGrant.prototype.getFormDataFromParams = function (params) {
         var formData = new FormData();
         for (var fld in params)
-            formData.append(fld, params[fld]);
+            if (params[fld])
+                formData.append(fld, params[fld]);
         return formData;
     };
     TokenGrant.prototype.getAccessTokenFromAuthCode = function (code, done) {

@@ -19,7 +19,7 @@ export class TokenGrant implements oauth2.ITokenGrant {
 	private getFormDataFromParams(params: oauth2.TokenGrantParams) : FormData {
 		let formData = new FormData();
 		for (let fld in params)
-			formData.append(fld, params[fld]);
+			if (params[fld]) formData.append(fld, params[fld]);
 		return formData;
 	}
 	getAccessTokenFromAuthCode(code:string, done: oauth2.ITokenGrantCompletionHandler) : void {
