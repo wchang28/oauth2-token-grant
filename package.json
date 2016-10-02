@@ -1,6 +1,6 @@
 {
   "name": "oauth2-token-grant",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "OAuth2 Token Grant Module",
   "main": "./js/index.js",
   "typings": "./js/index.d.ts",
@@ -13,6 +13,7 @@
   "author": "Wen Chang",
   "license": "MIT",
   "dependencies": {
+    "@types/form-data": "0.0.32",
     "form-data": "^1.0.0-rc4",
     "oauth2": "git+https://github.com/wchang28/oauth2.git",
     "rest-node": "git+https://github.com/wchang28/rest-node.git"

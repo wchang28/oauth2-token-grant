@@ -1,3 +1,4 @@
+"use strict";
 var $node = require('rest-node');
 var FormData = require('form-data');
 var $drv = $node.get();
