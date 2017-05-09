@@ -1,6 +1,7 @@
 "use strict";
-var $node = require('rest-node');
-var FormData = require('form-data');
+Object.defineProperty(exports, "__esModule", { value: true });
+var $node = require("rest-node");
+var FormData = require("form-data");
 var $drv = $node.get();
 var TokenGrant = (function () {
     function TokenGrant(tokenGrantOptions, clientAppSettings) {
