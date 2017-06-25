@@ -45,7 +45,7 @@ var TokenGrant = (function () {
                 formData.append(fld, params[fld]);
         return formData;
     };
-    TokenGrant.prototype.getAccessTokenFromAuthCode = function (code, done) {
+    TokenGrant.prototype.getAccessTokenFromAuthCode = function (code) {
         var params = {
             grant_type: 'authorization_code',
             code: code,
@@ -53,10 +53,10 @@ var TokenGrant = (function () {
             client_secret: this.client_secret,
             redirect_uri: this.redirect_uri
         };
-        $drv.$F(this.url, this.getFormDataFromParams(params), done, this.callOptions);
+        return $drv.$F("POST", this.url, this.getFormDataFromParams(params), this.callOptions).then(function (restReturn) { return restReturn.data; });
     };
     ;
-    TokenGrant.prototype.getAccessTokenFromPassword = function (username, password, done) {
+    TokenGrant.prototype.getAccessTokenFromPassword = function (username, password) {
         var params = {
             grant_type: 'password',
             client_id: this.client_id,
@@ -64,17 +64,17 @@ var TokenGrant = (function () {
             username: username,
             password: password
         };
-        $drv.$F(this.url, this.getFormDataFromParams(params), done, this.callOptions);
+        return $drv.$F("POST", this.url, this.getFormDataFromParams(params), this.callOptions).then(function (restReturn) { return restReturn.data; });
     };
     ;
-    TokenGrant.prototype.refreshAccessToken = function (refresh_token, done) {
+    TokenGrant.prototype.refreshAccessToken = function (refresh_token) {
         var params = {
             grant_type: 'refresh_token',
             client_id: this.client_id,
             client_secret: this.client_secret,
             refresh_token: refresh_token
         };
-        $drv.$F(this.url, this.getFormDataFromParams(params), done, this.callOptions);
+        return $drv.$F("POST", this.url, this.getFormDataFromParams(params), this.callOptions).then(function (restReturn) { return restReturn.data; });
     };
     ;
     return TokenGrant;

@@ -22,7 +22,7 @@ export class TokenGrant implements oauth2.ITokenGrant {
 			if (params[fld]) formData.append(fld, params[fld]);
 		return formData;
 	}
-	getAccessTokenFromAuthCode(code:string, done: oauth2.ITokenGrantCompletionHandler) : void {
+	getAccessTokenFromAuthCode(code:string) : Promise<oauth2.Access> {
 		let params: oauth2.TokenGrantParams = {
 			grant_type: 'authorization_code'
 			,code: code
@@ -30,9 +30,9 @@ export class TokenGrant implements oauth2.ITokenGrant {
 			,client_secret: this.client_secret
 			,redirect_uri: this.redirect_uri
 		};
-		$drv.$F(this.url, this.getFormDataFromParams(params), done, this.callOptions);
+		return $drv.$F("POST", this.url, this.getFormDataFromParams(params), this.callOptions).then((restReturn: $node.RESTReturn) => restReturn.data);
 	};
-	getAccessTokenFromPassword(username:string, password:string, done: oauth2.ITokenGrantCompletionHandler) : void {
+	getAccessTokenFromPassword(username:string, password:string) : Promise<oauth2.Access> {
 		let params: oauth2.TokenGrantParams = {
 			grant_type: 'password'
 			,client_id: this.client_id
@@ -40,15 +40,15 @@ export class TokenGrant implements oauth2.ITokenGrant {
 			,username: username
 			,password: password
 		};
-		$drv.$F(this.url, this.getFormDataFromParams(params), done, this.callOptions);	
+		return $drv.$F("POST", this.url, this.getFormDataFromParams(params), this.callOptions).then((restReturn: $node.RESTReturn) => restReturn.data);	
 	};
-	refreshAccessToken(refresh_token:string, done: oauth2.ITokenGrantCompletionHandler) : void {
+	refreshAccessToken(refresh_token:string) : Promise<oauth2.Access> {
 		let params: oauth2.TokenGrantParams = {
 			grant_type: 'refresh_token'
 			,client_id: this.client_id
 			,client_secret: this.client_secret
 			,refresh_token: refresh_token
 		};
-		$drv.$F(this.url, this.getFormDataFromParams(params), done, this.callOptions);
+		return $drv.$F("POST", this.url, this.getFormDataFromParams(params), this.callOptions).then((restReturn: $node.RESTReturn) => restReturn.data);
 	};
 }

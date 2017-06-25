@@ -10,7 +10,7 @@ export declare class TokenGrant implements oauth2.ITokenGrant {
     readonly redirect_uri: string;
     readonly callOptions: $node.ApiCallOptions;
     private getFormDataFromParams(params);
-    getAccessTokenFromAuthCode(code: string, done: oauth2.ITokenGrantCompletionHandler): void;
-    getAccessTokenFromPassword(username: string, password: string, done: oauth2.ITokenGrantCompletionHandler): void;
-    refreshAccessToken(refresh_token: string, done: oauth2.ITokenGrantCompletionHandler): void;
+    getAccessTokenFromAuthCode(code: string): Promise<oauth2.Access>;
+    getAccessTokenFromPassword(username: string, password: string): Promise<oauth2.Access>;
+    refreshAccessToken(refresh_token: string): Promise<oauth2.Access>;
 }
